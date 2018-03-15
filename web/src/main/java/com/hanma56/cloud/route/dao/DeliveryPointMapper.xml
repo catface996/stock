@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanma56.cloud.route.dao.DeliveryPointMapper">
+
+    <sql id="allColumn">
+        id,
+        userId,
+        taskId,
+        addressName,
+        longitude,
+        latitude,
+        pointType,
+        updated,
+        created,
+        arriveTime,
+        dispatchTime,
+        memo
+    </sql>
+
+    <!-- 根据任务ID 查询配送点列表 -->
+    <select id="selectByTaskId" resultType="com.hanma56.cloud.route.model.DeliveryPoint">
+      select <include refid="allColumn"/>
+        from deliveryPoint where taskId = #{taskId}
+    </select>
+
+
+</mapper>
